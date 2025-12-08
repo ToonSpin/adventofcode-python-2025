@@ -2,6 +2,7 @@ import functools
 import heapq
 import itertools
 import sys
+import math
 
 type JunctionBox = tuple[int, int, int]
 type CircuitSet = list[set[int]]
@@ -49,9 +50,9 @@ edge_count = 10 if len(input) < 100 else 1000
 
 cs: CircuitSet = []
 
-distances: list[tuple[int, int, int]] = []
+distances: list[tuple[float, int, int]] = []
 for (i, p), (j, q) in itertools.combinations(enumerate(input), 2):
-    distances.append((distance(p, q), i, j))
+    distances.append((math.dist(p, q), i, j))
 heapq.heapify(distances)
 
 for counter in itertools.count(1):
